@@ -1,0 +1,10 @@
+findstreaks takes -t and 5 arguments, the path to the filename, threshold, line threshold, min line length, and max line gap
+outputs txt file as 'findstreaks.txt'
+ex) ./findspace -t image.ext 128 40 40 40
+
+findstars takes -s and two arguments the path to the filename and the threshold.
+outputs txt file as 'findstars.txt'
+ex) ./findspace -s image.ext 128
+
+
+# All numbers shown in example are what one could use, other numbers may give better results.
