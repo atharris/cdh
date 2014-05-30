@@ -1,0 +1,1 @@
+This is the source code for the ground station. It should interpret commands and send them over the radio link to the flatsat. We may have to write new code for the actual radio hardware interface.
