@@ -8,7 +8,9 @@ int main(){
   radio.listen();
   int i;
   //  for(i = 0;i<30;i++){
-  radio.transmitPayload("testfile");
+  unsigned char data[10] = {'a','b','c','d','e','f','g','h','i','j'};
+  radio.configure_radio("upcfg-hipower");
+  radio.transmit_payload(data,sizeof(data));
     //  }
 
   return 0;

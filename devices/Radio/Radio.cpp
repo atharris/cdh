@@ -24,7 +24,7 @@ Radio::Radio(string path){
 
 }
 
-int Radio::configureRadio(string configurationFilePath){
+/*int Radio::configureRadio(string configurationFilePath){
 
   ifstream source;
   int result=preparesourcestream(configurationFilePath, source);
@@ -38,8 +38,40 @@ int Radio::configureRadio(string configurationFilePath){
   source.close();
   return 0;
  
+  }*/
+
+int Radio::configure_radio(string configure_file_path){
+  
+  //TODO: open file, get payload bytes, put in packet, transmit.
+  return 0;
+
 }
 
+int Radio::send_packet(Packet *packet){
+  
+  
+  unsigned char* packet_bytes = packet->get_bytes();
+  int bytes = packet->get_size();
+  if(write(fd_target,packet_bytes,bytes)<bytes){
+    std::cerr << "Could not write entire packet, not good." << std::endl;
+    return -1;
+  }
+  return 0;
+  
+  
+}
+
+
+int Radio::transmit_payload(unsigned char payload[], unsigned char payload_size){
+  
+  Packet *packet = new Packet(payload,TRANSMIT_DATA,payload_size);
+  send_packet(packet);
+  return 0;
+
+}
+
+
+/*
 int Radio::transmitPayload(string payloadFile){
 
   ifstream source;
@@ -53,6 +85,7 @@ int Radio::transmitPayload(string payloadFile){
   source.close();
 
 }
+*/
 
 void *listenThread(void *x){
 
